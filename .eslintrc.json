@@ -1,0 +1,44 @@
+{
+  "extends": "airbnb-base",
+  "parserOptions": {
+    "sourceType": "script"
+  },
+  "installedESLint": true,
+  "ecmaFeatures": {
+    "impliedStrict": false
+  },
+  "plugins": [
+    "import"
+    ],
+    "rules": {
+      "no-multi-assign": "warn",
+      "max-len": "warn",
+      "no-console": "off",
+      "no-unused-expressions": "off",
+      "no-use-before-define": "off",
+      "no-param-reassign": "off",
+      "import/no-extraneous-dependencies": "off",
+      "global-require": "off",
+      "import/no-dynamic-require": "off",
+      "no-unused-vars": "warn",
+      "consistent-return": "off",
+      "comma-dangle": "off",
+      "space-before-function-paren": "off",
+      "keyword-spacing": "off",
+      "brace-style": "off",
+      "object-curly-spacing": "off",
+      "arrow-parens": "off",
+      "quotes": "off",
+      "space-infix-ops": "off",
+      "prefer-rest-params": "off",
+      "prefer-spread": "off",
+      "no-useless-escape": "off",
+      "no-multi-spaces": "off",
+      "comma-spacing": "off"
+    },
+    "env": {
+      "browser": false,
+      "node": true,
+      "mocha": true
+    }
+}

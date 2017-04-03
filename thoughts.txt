@@ -1,0 +1,161 @@
+Is the screenview the intent, or the state?
+    State
+        These really communicate what's happening in the app. Intents don't really do that
+    Intent
+        Timings may make a bit more sense this way
+    Both?
+
+A rider that allows logging events
+Send at the end of each request
+
+
+How would we log intents?
+How would we log states?
+
+
+Config
+=======
+* Tracking code
+* Debug
+
+
+To Implement
+=============
+  Done:
+  Responses per round-trip are logged as screens
+  Rider gives access to raw GA for transaction logging
+  Raw Intents
+  Raw States
+  Raw Slots
+  App version logging
+  Device capabilities
+  Start/end session control
+  locale logging
+  Rider for logging custom events
+
+  To Verfiy:
+  Exceptions
+  per-intent timings (from a state)
+
+
+  Docs
+
+Not going to implement
+========
+* Ability to set geographical override. Could still do it manually via other params
+* Making only intent logging interactive (since I can't see bounce metrics anywhere anyway)
+  if a user has linked their account into something or other
+  events from responses doc
+
+Things we've seen before
+* Logging custom events (pretty much on each reply)
+* Logging exceptions
+* Logging transactions (ordering)
+* Setting a custom dimension (Formerly also for skill/AL separation)
+* Session control for session start/end
+
+Nice to add
+=====
+* Safety around parameters. Don't just log [object Object], give a warning when that is happening
+* Detect device capabilities and put that in the models section
+* Detect function name and version, send in the ds attribute? Or send it in the application tracking attribute.
+* Ability to set the geographical override in skills that have a ZIP code
+* ul, based on the request locale
+* Document location URL to set our current state? Or maybe just the title?
+* Only pageview events should be interactive. All other events are non-interactive
+* timings: What are the categories?
+* Know if the user has linked their account. Probably through acuisition channel? Or something else?
+
+Can mobile apps do?
+=========
+Bounce rate. The user invokes a single intent, but nothing else
+Language: Yes
+
+To Know:
+Hit type values
+ 'pageview', 'screenview', 'event', 'transaction', 'item', 'social', 'exception', 'timing'.
+
+
+
+{
+  "version": "1.0",
+  "session": {
+    "new": false,
+    "sessionId": "amzn1.echo-api.session.5a54e8c6-be67-4845-a20b-fd1803ecb40a",
+    "application": {
+      "applicationId": "amzn1.echo-sdk-ams.app.230fbb7e-3d46-47fc-96df-ddd3a60a47f6"
+    },
+    "attributes": {
+      "modelData": {
+        "year": 1,
+        "population": 100,
+        "immigrants": 0,
+        "acres": 1000,
+        "bushels": 2800,
+        "totalDied": 0,
+        "percentPopDied": 0,
+        "acresCost": 26,
+        "command": {
+          "buy": 0,
+          "feed": 0,
+          "plant": 0
+        }
+      },
+      "reprompt": "Do you want to exit Hammurabi?",
+      "state": "exit",
+      "reply": {
+        "msgPath": "ExitQuery",
+        "state": "exit"
+      }
+    },
+    "user": {
+      "userId": "amzn1.ask.account.AGOTNNCGBTPGJGZ5JERNLK6PJ67FYFSHOJDGEIPZHFIO6RYHO636ODONN4B57HGGVLRCMTBOLFWJAEAMNMEU433CWPGUNM56WKOQTBEKHOZUZBJM7GHTTDNKEWWYTTMW55BGPALRTP2ZWNN3DJQAXLIP4ZVRQUPYXJNIH2VM7G76OORLRJ4Z7JUXOZWFAPMLX6NTQXQN3CTG37Q"
+    }
+  },
+  "context": {
+    "AudioPlayer": {
+      "playerActivity": "IDLE"
+    },
+    "System": {
+      "application": {
+        "applicationId": "amzn1.echo-sdk-ams.app.230fbb7e-3d46-47fc-96df-ddd3a60a47f6"
+      },
+      "user": {
+        "userId": "amzn1.ask.account.AGOTNNCGBTPGJGZ5JERNLK6PJ67FYFSHOJDGEIPZHFIO6RYHO636ODONN4B57HGGVLRCMTBOLFWJAEAMNMEU433CWPGUNM56WKOQTBEKHOZUZBJM7GHTTDNKEWWYTTMW55BGPALRTP2ZWNN3DJQAXLIP4ZVRQUPYXJNIH2VM7G76OORLRJ4Z7JUXOZWFAPMLX6NTQXQN3CTG37Q"
+      },
+      "device": {
+        "supportedInterfaces": {
+          "AudioPlayer": {}
+        }
+      }
+    }
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "amzn1.echo-api.request.9e9b54ec-2a91-4cb4-9047-89e9b6475bac",
+    "timestamp": "2017-03-24T19:25:13Z",
+    "locale": "en-US",
+    "intent": {
+      "name": "AMAZON.YesIntent"
+    }
+  }
+}
+
+
+
+
+PATH: '/var/lang/bin:/usr/local/bin:/usr/bin/:/bin',
+LANG: 'en_US.UTF-8',
+LD_LIBRARY_PATH: '/var/lang/lib:/lib64:/usr/lib64:/var/runtime:/var/runtime/lib:/var/task:/var/task/lib',
+LAMBDA_TASK_ROOT: '/var/task',
+LAMBDA_RUNTIME_DIR: '/var/runtime',
+AWS_REGION: 'us-east-1',
+AWS_DEFAULT_REGION: 'us-east-1',
+AWS_LAMBDA_LOG_GROUP_NAME: '/aws/lambda/blah',
+AWS_LAMBDA_LOG_STREAM_NAME: '2017/03/27/[$LATEST]46c85d8039f049ff9570411674cfd79b',
+AWS_LAMBDA_FUNCTION_NAME: 'blah',
+AWS_LAMBDA_FUNCTION_MEMORY_SIZE: '128',
+AWS_LAMBDA_FUNCTION_VERSION: '$LATEST',
+AWS_EXECUTION_ENV: 'AWS_Lambda_nodejs6.10',
+NODE_PATH: '/var/runtime:/var/task:/var/runtime/node_modules',
+
