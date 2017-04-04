@@ -57,36 +57,36 @@ Additionally a `ga` object is attached to the `alexaEvent` object, allowing you 
 ### Suppressing State Events
 Sometimes smaller intermediary states are just not interesting to log. Suppress a state from logging as follows:
 ```javascript
-skill.onState('my-state',alexaEvent => {
+skill.onState('my-state', alexaEvent => {
   alexaEvent.ga.ignore();
-  return {reply: 'Greeting', to: 'my-next-state'};
+  return { reply: 'Greeting', to: 'my-next-state' };
 })
 ```
 
 ### Custom Events
 Log a custom event by invoking `.event` on the `ga` object
 ```javascript
-skill.onState('my-state',alexaEvent => {
-  alexaEvent.ga.event('Category','Action','Label',Value)
+skill.onState('my-state', alexaEvent => {
+  alexaEvent.ga.event('Category', 'Action', 'Label', Value)
   return {reply: 'Greeting', to: 'my-next-state'};
 })
 ```
 ### Timing
 Have something to time? Use the `ga` object. Remember that the request and each state is already timed for you.
 ```javascript
-skill.onState('my-state',alexaEvent => {
-  alexaEvent.ga.time('Category','Variable');
-  return longRunningOperaation().then(() => {
-    alexaEvent.ga.timeEnd('Category','Variable');
-  }).then(finishIt)
+skill.onState('my-state', alexaEvent => {
+  alexaEvent.ga.time('Category', 'Variable');
+  return longRunningOperation().then(() => {
+    alexaEvent.ga.timeEnd('Category', 'Variable');
+  }).then(finishIt);
 })
 ```
 
 ### Anything Else
 Use the visitor object to get access to a [universal analytics](https://www.npmjs.com/package/universal-analytics) object.
 ```javascript
-skill.onState('my-state',alexaEvent => {
-  alexaEvent.ga.visitor.transaction('213')
+skill.onState('my-state', alexaEvent => {
+  alexaEvent.ga.visitor.transaction('213');
 })
 ```
 
