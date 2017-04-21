@@ -30,7 +30,8 @@ require('voxa-ga')(skill,config.google_analytics);
   trackingId: "UA-XXXXXX-X", // Your app's tracking id
   appName: "hamurabi", // The application name. If not provided, an attempt will be made to derive it
   appVersion: "1.1", // The applications current version number. If not provided, an attempt will be made to derive it.
-  ignoreUsers: [] // An array of users that will be ignored. Useful for blacklisting dev or monitoring accounts from analytics
+  ignoreUsers: [], // An array of users that will be ignored. Useful for blacklisting dev or monitoring accounts from analytics
+  suppressSending: false, // A flag to supress sending hits. Useful while developing on the website
 }
 ```
 
@@ -92,3 +93,4 @@ skill.onState('my-state', alexaEvent => {
 
 ### Sending events
 The plugin will automatically send hits at the end of each request.
+
