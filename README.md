@@ -14,7 +14,7 @@ Just install from [npm](https://www.npmjs.com/package/voxa-ga)
 ```bash
 npm install --save voxa-ga
 ```
-**Important! This plugin is designed to work with Analytic properties that are setup as Mobile App's not Websites**
+**Important! As of version 1.0, this plugin is designed to work with Analytic properties that are setup as Websites. Previously it was the opposite, working only with Mobile Analytics Properties.**
 
 Usage
 ------
@@ -28,8 +28,10 @@ require('voxa-ga')(skill,config.google_analytics);
 ```javascript
 {
   trackingId: "UA-XXXXXX-X", // Your app's tracking id
+
   appName: "hamurabi", // The application name. If not provided, an attempt will be made to derive it
   appVersion: "1.1", // The applications current version number. If not provided, an attempt will be made to derive it.
+
   ignoreUsers: [], // An array of users that will be ignored. Useful for blacklisting dev or monitoring accounts from analytics
   suppressSending: false, // A flag to supress sending hits. Useful while developing on the website
 }
@@ -40,7 +42,7 @@ What You Get
 
 By attaching the plugin, for free you get the following
 * Track users by their Alexa user id
-* The paths of each response will be logged as a screen view (e.g. Welcome.FirstTimeUser)
+* The paths of each response will be logged as a page view (e.g. Welcome.FirstTimeUser)
 * Events will be logged to track each
   * Intent (category: "Intents", action: "IntentName")
   * State (category: "States", action: "state-name")
