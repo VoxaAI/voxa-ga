@@ -1,6 +1,6 @@
 {
   "name": "voxa-ga",
-  "version": "1.0.2",
+  "version": "2.0.0-alpha",
   "description": "Integrate Google Universal Analytics into your Alexa apps using the voxa framework",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,7 @@
   ],
   "author": "Rain Agency <npm@rain.agency> (http://rain.agency)",
   "engines": {
-    "node": ">= 4.3.2"
+    "node": ">=6.10"
   },
   "license": "MIT",
   "dependencies": {
@@ -45,11 +45,13 @@
     "istanbul": "^0.4.5",
     "mocha": "3.2.0",
     "mocha-jenkins-reporter": "0.3.7",
-    "simple-mock": "^0.7.3",
-    "voxa": "^2.0.0"
+    "simple-mock": "^0.7.3"
   },
   "bugs": {
     "url": "https://github.com/mediarain/voxa-ga/issues"
   },
-  "homepage": "https://github.com/mediarain/voxa-ga#readme"
+  "homepage": "https://github.com/mediarain/voxa-ga#readme",
+  "peerDependencies": {
+    "voxa": "^3.0.0"
+  }
 }
