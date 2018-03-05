@@ -34,6 +34,7 @@ require('voxa-ga')(skill,config.google_analytics);
 
   ignoreUsers: [], // An array of users that will be ignored. Useful for blacklisting dev or monitoring accounts from analytics
   suppressSending: false, // A flag to supress sending hits. Useful while developing on the website
+  suppressSlots: ['phonenumber'], // An array of slots that shouldn't be logged automatically. Use to remove PII slots.
 }
 ```
 
