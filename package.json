@@ -1,13 +1,13 @@
 {
   "name": "voxa-ga",
-  "version": "2.0.0-alpha2",
+  "version": "2.0.0-alpha3",
   "description": "Integrate Google Universal Analytics into your Alexa apps using the voxa framework",
   "main": "index.js",
   "scripts": {
     "test": "istanbul cover _mocha -- --recursive tests",
     "test-ci": "JUNIT_REPORT_PATH=junit.xml istanbul cover _mocha -- --recursive --colors --reporter mocha-jenkins-reporter tests",
     "cobertura": "istanbul report cobertura --root coverage",
-    "lint": "eslint lib test"
+    "lint": "eslint lib tests"
   },
   "repository": {
     "type": "git",
