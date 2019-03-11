@@ -1,12 +1,10 @@
 'use strict';
 
 const chai = require('chai');
-
+const EventRider = require('../lib/EventRider');
 const simple = require('simple-mock');
 
 const expect = chai.expect;
-const EventRider = require('../lib/EventRider');
-const universalAnalytics = require('universal-analytics');
 
 describe('EventRider.spec.js', () => {
   describe('time', () => {
@@ -70,4 +68,5 @@ describe('EventRider.spec.js', () => {
 const alexaEvent = {
   user: { userId: 'blah' },
   request: { locale: 'en-us' },
+  platform: { name: 'alexa' },
 };
