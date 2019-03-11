@@ -1,11 +1,9 @@
 'use strict';
 
 const chai = require('chai');
-
-const simple = require('simple-mock');
+const detect = require('../lib/detect');
 
 const expect = chai.expect;
-const detect = require('../lib/detect');
 
 describe('detect', () => {
   describe('appNameFromDir', () => {
