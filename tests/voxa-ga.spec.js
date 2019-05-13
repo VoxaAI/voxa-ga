@@ -3,10 +3,9 @@
 const chai = require('chai');
 const simple = require('simple-mock');
 const _ = require('lodash');
-const universalAnalytics = require('universal-analytics');
-const Voxa = require('voxa');
+const { AlexaPlatform, VoxaApp } = require('voxa');
 
-const expect = chai.expect;
+const { expect } = chai;
 const voxaGA = require('../lib/voxa-ga');
 
 const alexaEvent = {
@@ -20,49 +19,62 @@ const alexaEvent = {
     intent: {
       name: 'BlahIntent',
       slots: {
-        "SlotA": { name: 'SlotA', value: 10 },
-        "SlotB": { name: 'SlotB', value: 11 },
-        "SlotC": { name: 'SlotC', value: 'a' }
-      }
-    }
-  }
+        SlotA: { name: 'SlotA', value: 10 },
+        SlotB: { name: 'SlotB', value: 11 },
+        SlotC: { name: 'SlotC', value: 'a' },
+      },
+    },
+  },
 };
 
 describe('voxa-ga.spec.js', () => {
-  afterEach(function(){ simple.restore(); })
+  let skill;
+  let alexaPlatform;
+  let rider;
+
+  beforeEach(() => {
+    skill = new VoxaApp({ views: {} });
+    alexaPlatform = new AlexaPlatform(skill);
+
+    skill.onIntentRequest((event) => {
+      rider = event.ga;
+    });
+
+    skill.onIntent('BlahIntent', () => ({ to: 'die' }));
+  });
+
+  afterEach(() => { simple.restore(); });
 
   it('logs slot values', () => {
-    let skill = new Voxa({views: {} });
-    let rider = null
-    voxaGA(skill, {trackingId: 'blah', suppressSending: true});
-    skill.onIntentRequest(event => {
-      rider = event.ga;
-    })
-    return skill.execute(alexaEvent, {}).then(response => {
-      let queue = rider.visitor._queue;
-      expect(_.find(queue,{t:'event',ec:'Slots',ea:'SlotA',el: 10, ev: 10})).to.exist;
-      expect(_.find(queue,{t:'event',ec:'Slots',ea:'SlotB',el: 11, ev: 11})).to.exist;
-      expect(_.find(queue,{t:'event',ec:'Slots',ea:'SlotC',el: 'a'})).to.exist;
-    })
-  })
+    voxaGA(skill, { trackingId: 'blah', suppressSending: true });
+
+    return alexaPlatform.execute(alexaEvent, {}).then(() => {
+      const queue = rider.visitor._queue;
+      expect(_.find(queue, {
+        t: 'event', ec: 'Params', ea: 'SlotA', el: 10, ev: 10,
+      })).to.exist;
+      expect(_.find(queue, {
+        t: 'event', ec: 'Params', ea: 'SlotB', el: 11, ev: 11,
+      })).to.exist;
+      expect(_.find(queue, {
+        t: 'event', ec: 'Params', ea: 'SlotC', el: 'a',
+      })).to.exist;
+    });
+  });
 
   it('does not log suppressed slots', () => {
-    let skill = new Voxa({views: {} });
-    let rider = null
     voxaGA(skill, {
       trackingId: 'blah',
       suppressSending: true,
       suppressSlots: ['SlotB'],
     });
-    skill.onIntentRequest(event => {
-      rider = event.ga;
-    })
-    return skill.execute(alexaEvent, {}).then(response => {
-      let queue = rider.visitor._queue;
-      expect(_.find(queue,{t:'event',ec:'Slots',ea:'SlotA',el: 10, ev: 10})).to.exist;
-      expect(_.find(queue,{t:'event',ec:'Slots',ea:'SlotB'})).to.not.exist;
-    })
-  })
 
+    return alexaPlatform.execute(alexaEvent, {}).then(() => {
+      const queue = rider.visitor._queue;
+      expect(_.find(queue, {
+        t: 'event', ec: 'Params', ea: 'SlotA', el: 10, ev: 10,
+      })).to.exist;
+      expect(_.find(queue, { t: 'event', ec: 'Params', ea: 'SlotB' })).to.not.exist;
+    });
+  });
 });
-

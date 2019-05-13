@@ -3,15 +3,13 @@
   "parserOptions": {
     "sourceType": "script"
   },
-  "installedESLint": true,
-  "ecmaFeatures": {
-    "impliedStrict": false
-  },
   "plugins": [
     "import"
   ],
   "rules": {
+    "comma-dangle": "warn",
     "consistent-return": "warn",
+    "no-underscore-dangle": "warn",
     "no-multi-assign": "warn",
     "spaced-comment": "warn",
     "max-len": "warn",
