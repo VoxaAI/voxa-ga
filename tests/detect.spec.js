@@ -3,7 +3,7 @@
 const chai = require('chai');
 const detect = require('../lib/detect');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('detect', () => {
   describe('appNameFromDir', () => {

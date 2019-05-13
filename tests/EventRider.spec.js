@@ -1,10 +1,10 @@
 'use strict';
 
 const chai = require('chai');
-const EventRider = require('../lib/EventRider');
 const simple = require('simple-mock');
+const EventRider = require('../lib/EventRider');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('EventRider.spec.js', () => {
   describe('time', () => {

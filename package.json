@@ -30,29 +30,29 @@
   },
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^3.4.1",
-    "debug": "^2.6.0",
-    "lodash": "^4.13.1",
-    "universal-analytics": "^0.4.13"
+    "bluebird": "^3.5.4",
+    "debug": "^4.1.1",
+    "lodash": "^4.17.11",
+    "universal-analytics": "^0.4.20"
   },
   "devDependencies": {
-    "async": "^2.2.0",
-    "chai": "^3.5.0",
+    "async": "^2.6.2",
+    "chai": "^4.2.0",
     "command": "0.0.5",
-    "eslint": "3.15.0",
-    "eslint-config-airbnb-base": "11.1.0",
-    "eslint-plugin-import": "2.2.0",
+    "eslint": "5.16.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.17.2",
     "istanbul": "^0.4.5",
-    "mocha": "3.2.0",
-    "mocha-jenkins-reporter": "0.3.7",
-    "simple-mock": "^0.7.3",
-    "voxa": "^3.0.0-alpha20"
+    "mocha": "6.1.4",
+    "mocha-jenkins-reporter": "0.4.1",
+    "simple-mock": "^0.8.0",
+    "voxa": "^3.1.0"
   },
   "bugs": {
     "url": "https://github.com/mediarain/voxa-ga/issues"
   },
   "homepage": "https://github.com/mediarain/voxa-ga#readme",
   "peerDependencies": {
-    "voxa": "^3.0.0-alpha20"
+    "voxa": "^3.1.0"
   }
 }
