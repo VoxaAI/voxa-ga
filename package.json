@@ -7,7 +7,9 @@
     "test": "istanbul cover _mocha -- --recursive tests",
     "test-ci": "JUNIT_REPORT_PATH=junit.xml istanbul cover _mocha -- --recursive --colors --reporter mocha-jenkins-reporter tests",
     "cobertura": "istanbul report cobertura --root coverage",
-    "lint": "eslint lib tests"
+    "lint": "eslint lib tests",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -33,7 +35,8 @@
     "bluebird": "^3.5.4",
     "debug": "^4.1.1",
     "lodash": "^4.17.11",
-    "universal-analytics": "^0.4.20"
+    "universal-analytics": "^0.4.20",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "async": "^2.6.2",
@@ -54,5 +57,6 @@
   "homepage": "https://github.com/mediarain/voxa-ga#readme",
   "peerDependencies": {
     "voxa": "^3.1.0"
-  }
+  },
+  "snyk": true
 }
