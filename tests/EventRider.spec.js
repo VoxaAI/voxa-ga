@@ -62,6 +62,11 @@ describe('EventRider.spec.js', () => {
       sut.timeEnd('a');
       expect(sut.visitor.timing.called).to.be.false;
     });
+
+    it('can add geolocation', () => {
+      const sut = new EventRider(alexaEvent, {});
+      expect(sut.visitor._persistentParams.geoid).to.be.equal("US");
+    });
   });
 });
 
