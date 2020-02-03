@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc --reporter=html --reporter=text --report-dir=reports mocha  tests/",
-    "coverage": "nyc report --reporter=text-lcov > ./coverage/lcov.info",
+    "coverage": "nyc report --reporter=text-lcov > ./reports/lcov.info",
     "lint": "eslint lib tests"
   },
   "repository": {
