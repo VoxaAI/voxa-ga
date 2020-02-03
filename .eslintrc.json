@@ -1,30 +1,7 @@
 {
-  "extends": "airbnb-base",
-  "parserOptions": {
-    "sourceType": "script"
-  },
-  "plugins": [
-    "import"
-  ],
-  "rules": {
-    "comma-dangle": "warn",
-    "consistent-return": "warn",
-    "no-underscore-dangle": "warn",
-    "no-multi-assign": "warn",
-    "spaced-comment": "warn",
-    "max-len": "warn",
-    "no-unused-expressions": "off",
-    "no-use-before-define": "off",
-    "no-param-reassign": "off",
-    "import/no-extraneous-dependencies": "off",
-    "global-require": "off",
-    "import/no-dynamic-require": "off",
-    "no-unused-vars": "warn",
-    "no-console": "off"
-  },
+  "extends": ["plugin:prettier/recommended"],
+
   "env": {
-    "browser": false,
-    "node": true,
-    "mocha": true
+    "es6": true
   }
 }
