@@ -6,6 +6,6 @@ npm run coverage
 npm run lint
 
 if [ "${CI}" = "true" ]; then
-	cat ./coverage/lcov.info | nyc coveralls
+	cat ./reports/lcov.info | nyc coveralls
 fi
 
