@@ -1,12 +1,11 @@
 {
   "name": "voxa-ga",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Integrate Google Universal Analytics into your Alexa apps using the voxa framework",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover _mocha -- --recursive tests",
-    "test-ci": "JUNIT_REPORT_PATH=junit.xml istanbul cover _mocha -- --recursive --colors --reporter mocha-jenkins-reporter tests",
-    "cobertura": "istanbul report cobertura --root coverage",
+    "test": "nyc --reporter=html --reporter=text --report-dir=reports mocha  tests/",
+    "coverage": "nyc report --reporter=text-lcov > ./reports/lcov.info",
     "lint": "eslint lib tests"
   },
   "repository": {
@@ -36,23 +35,30 @@
     "universal-analytics": "^0.4.20"
   },
   "devDependencies": {
-    "async": "^2.6.2",
+    "aws-sdk": "^2.610.0",
     "chai": "^4.2.0",
-    "command": "0.0.5",
-    "eslint": "5.16.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "2.17.2",
-    "istanbul": "^0.4.5",
-    "mocha": "6.1.4",
-    "mocha-jenkins-reporter": "0.4.1",
+    "coveralls": "^3.0.9",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.1",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "simple-mock": "^0.8.0",
-    "voxa": "^3.1.0"
+    "voxa": "^3.3.1"
   },
   "bugs": {
     "url": "https://github.com/mediarain/voxa-ga/issues"
   },
   "homepage": "https://github.com/mediarain/voxa-ga#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx pretty-quick --staged && npm run lint && npm run test"
+    }
+  },
   "peerDependencies": {
-    "voxa": "^3.1.0"
+    "voxa": "^3.3.1"
   }
 }
