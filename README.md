@@ -54,6 +54,7 @@ By attaching the plugin, for free you get the following
 - Session start/stop bookends
 - The user's locale
 - Exceptions (fatal or caught) are captured
+- Health check events from dialog flow are suppressed. [more details](https://developers.google.com/assistant/console/health-checks)
 
 Additionally a `ga` object is attached to the `alexaEvent` object, allowing you to log custom events.
 
