@@ -1,6 +1,6 @@
 {
   "name": "voxa-ga",
-  "version": "2.1.0-alpha2",
+  "version": "2.1.0-alpha3",
   "description": "Integrate Google Universal Analytics into your Alexa apps using the voxa framework",
   "main": "index.js",
   "scripts": {
